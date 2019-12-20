@@ -2,10 +2,11 @@ package com.hnshengen.housecollection.bean;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class UserInfo {
+public class UserInfo implements Serializable{
 
     private String nickName;
 
