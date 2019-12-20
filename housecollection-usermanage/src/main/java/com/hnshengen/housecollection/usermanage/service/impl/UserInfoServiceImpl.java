@@ -1,10 +1,10 @@
 package com.hnshengen.housecollection.usermanage.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.hnshengen.housecollection.bean.UserInfo;
 import com.hnshengen.housecollection.service.UserInfoService;
 import com.hnshengen.housecollection.usermanage.mapper.UserInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
