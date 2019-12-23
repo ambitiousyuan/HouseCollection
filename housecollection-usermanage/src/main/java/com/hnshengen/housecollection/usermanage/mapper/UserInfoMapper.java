@@ -1,9 +1,8 @@
 package com.hnshengen.housecollection.usermanage.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hnshengen.housecollection.bean.UserInfo;
 import org.springframework.stereotype.Component;
-import tk.mybatis.mapper.common.Mapper;
 
-@Component
-public interface UserInfoMapper extends Mapper<UserInfo> {
+public interface UserInfoMapper extends BaseMapper<UserInfo> {
 }
