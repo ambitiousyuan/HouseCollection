@@ -53,18 +53,17 @@ import java.util.Properties;
  * @date 2016年11月12日 下午5:03:32
  */
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig  {
 
     @Autowired
-    private HouseCollectionProperties wenJuanDiaoChaProperties;
+    private HouseCollectionProperties houseCollectionProperties;
 
 
     /**
      * 静态资源映射
      */
-    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        if (wenJuanDiaoChaProperties.getSwaggerOpen()) {
+        if (houseCollectionProperties.getSwaggerOpen()) {
             //swagger
             registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
             registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
@@ -78,7 +77,6 @@ public class WebConfig implements WebMvcConfigurer {
     /**
      * 增加对rest api鉴权的spring mvc拦截器
      */
-    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new RestApiInteceptor()).addPathPatterns("/gunsApi/**");
         registry.addInterceptor(new AttributeSetInteceptor()).excludePathPatterns("/mobile/**","/assets/**", "/gunsApi/**", "/login", "/global/sessionError", "/kaptcha", "/error", "/global/error").addPathPatterns("/**");
@@ -129,7 +127,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public JdkRegexpMethodPointcut druidStatPointcut() {
         JdkRegexpMethodPointcut druidStatPointcut = new JdkRegexpMethodPointcut();
-        String patterns = "com.se.jizi.modular.*.service.*";
+        String patterns = "com.hnshengen.housecollection.house.modular.*.service.*";
         //可以set多个
         druidStatPointcut.setPatterns(patterns);
         return druidStatPointcut;

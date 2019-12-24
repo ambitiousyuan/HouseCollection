@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.se.jizi.modular.system.mapper.DeptMapper">
+<mapper namespace="com.hnshengen.housecollection.house.modular.system.mapper.DeptMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.se.jizi.modular.system.entity.Dept">
+    <resultMap id="BaseResultMap" type="com.hnshengen.housecollection.house.modular.system.entity.Dept">
         <id column="dept_id" property="deptId" />
         <result column="pid" property="pid" />
         <result column="pids" property="pids" />
@@ -23,7 +23,7 @@
         dept_id AS "deptId", pid AS "pid", pids AS "pids", simple_name AS "simpleName", full_name AS "fullName", description AS "description", version AS "version", sort AS "sort", create_time AS "createTime", update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser"
     </sql>
 
-    <select id="tree" resultType="com.se.jizi.core.common.node.ZTreeNode">
+    <select id="tree" resultType="com.hnshengen.housecollection.house.core.common.node.ZTreeNode">
 		select dept_id AS id, pid as "pId", simple_name as name,
 		(
 		CASE
@@ -48,11 +48,11 @@
         order by sort ASC
     </select>
 
-    <select id="treeviewNodes" resultType="com.se.jizi.core.common.node.TreeviewNode">
+    <select id="treeviewNodes" resultType="com.hnshengen.housecollection.house.core.common.node.TreeviewNode">
         select dept_id AS tags, pid as "parentId", simple_name as text from sys_dept
     </select>
 
-    <select id="likePids" resultType="com.se.jizi.modular.system.entity.Dept">
+    <select id="likePids" resultType="com.hnshengen.housecollection.house.modular.system.entity.Dept">
         select
         <include refid="Base_Column_List"/>
         from sys_dept where 1 = 1

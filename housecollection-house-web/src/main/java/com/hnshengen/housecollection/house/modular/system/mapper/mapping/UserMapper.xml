@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.se.jizi.modular.system.mapper.UserMapper">
+<mapper namespace="com.hnshengen.housecollection.house.modular.system.mapper.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.se.jizi.modular.system.entity.User">
+    <resultMap id="BaseResultMap" type="com.hnshengen.housecollection.house.modular.system.entity.User">
         <id column="user_id" property="userId" />
         <result column="avatar" property="avatar" />
         <result column="account" property="account" />
@@ -64,7 +64,7 @@
 		#{userId}
 	</update>
 
-    <select id="getByAccount" resultType="com.se.jizi.modular.system.entity.User">
+    <select id="getByAccount" resultType="com.hnshengen.housecollection.house.modular.system.entity.User">
         select
         <include refid="Base_Column_List_With_Pwd"/>
         from sys_user where account = #{account} and status != 'DELETED'

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.se.jizi.modular.system.mapper.MenuMapper">
+<mapper namespace="com.hnshengen.housecollection.house.modular.system.mapper.MenuMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.se.jizi.modular.system.entity.Menu">
+    <resultMap id="BaseResultMap" type="com.hnshengen.housecollection.house.modular.system.entity.Menu">
         <id column="menu_id" property="menuId" />
         <result column="code" property="code" />
         <result column="pcode" property="pcode" />
@@ -50,7 +50,7 @@
         sys_relation where role_id = #{roleId}
     </select>
 
-    <select id="menuTreeList" resultType="com.se.jizi.core.common.node.ZTreeNode">
+    <select id="menuTreeList" resultType="com.hnshengen.housecollection.house.core.common.node.ZTreeNode">
         SELECT
         m1.menu_id AS id,
         (
@@ -78,7 +78,7 @@
         m1.menu_id ASC
     </select>
 
-    <select id="menuTreeListByMenuIds" resultType="com.se.jizi.core.common.node.ZTreeNode">
+    <select id="menuTreeListByMenuIds" resultType="com.hnshengen.housecollection.house.core.common.node.ZTreeNode">
         SELECT
         m1.menu_id AS id,
         (
@@ -140,7 +140,7 @@
         where rel.role_id = #{roleId}
     </select>
 
-    <select id="getMenusByRoleIds" resultType="com.se.jizi.core.common.node.MenuNode">
+    <select id="getMenusByRoleIds" resultType="com.hnshengen.housecollection.house.core.common.node.MenuNode">
         SELECT
         m1.menu_id AS id,
         m1.icon AS icon,
@@ -195,7 +195,7 @@
         </if>
     </select>
 
-    <select id="getMenusLikePcodes" resultType="com.se.jizi.modular.system.entity.Menu">
+    <select id="getMenusLikePcodes" resultType="com.hnshengen.housecollection.house.modular.system.entity.Menu">
         select
         <include refid="Base_Column_List"></include>
         from sys_menu where 1 = 1

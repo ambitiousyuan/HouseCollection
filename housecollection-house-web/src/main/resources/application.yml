@@ -42,11 +42,11 @@ spring:
       check: false
 
 mybatis-plus:
-  typeAliasesPackage: com.se.jizi.modular.*.model
-  mapper-locations: classpath:com/se/jizi/modular/**/mapping/*.xml
+  typeAliasesPackage: com.hnshengen.housecollection.house.modular.*.model
+  mapper-locations: classpath:com/hnshengen/housecollection/house/modular/**/mapping/*.xml
 
 log:
-  path: jizi-logs
+  path: housecollection-logs
 
 wechat:
   myAppId: wx4622d866de87ea14

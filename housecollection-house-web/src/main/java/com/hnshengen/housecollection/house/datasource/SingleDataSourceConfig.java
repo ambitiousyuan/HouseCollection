@@ -31,7 +31,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ConditionalOnProperty(prefix = "jizi.muti-datasource", name = "open", havingValue = "false", matchIfMissing = true)
 @EnableTransactionManagement(proxyTargetClass = true)
-@MapperScan(basePackages = {"com.se.jizi.modular.*.mapper"})
+@MapperScan(basePackages = {"com.hnshengen.housecollection.house.modular.*.mapper"})
 public class SingleDataSourceConfig {
 
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.se.jizi.modular.system.mapper.RoleMapper">
+<mapper namespace="com.hnshengen.housecollection.house.modular.system.mapper.RoleMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.se.jizi.modular.system.entity.Role">
+    <resultMap id="BaseResultMap" type="com.hnshengen.housecollection.house.modular.system.entity.Role">
         <id column="role_id" property="roleId" />
         <result column="pid" property="pid" />
         <result column="name" property="name" />
@@ -35,13 +35,13 @@
 		delete from sys_relation where role_id = #{roleId}
 	</delete>
 
-    <select id="roleTreeList" resultType="com.se.jizi.core.common.node.ZTreeNode">
+    <select id="roleTreeList" resultType="com.hnshengen.housecollection.house.core.common.node.ZTreeNode">
 		select role_id AS id, pid as "pId",
 		name as name, (case when (pid = 0 or pid is null) then 'true'
 		else 'false' end) as "open" from sys_role
 	</select>
 
-    <select id="roleTreeListByRoleId" resultType="com.se.jizi.core.common.node.ZTreeNode">
+    <select id="roleTreeListByRoleId" resultType="com.hnshengen.housecollection.house.core.common.node.ZTreeNode">
         SELECT
         r.role_id as id,
         pid as "pId",
