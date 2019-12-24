@@ -1,0 +1,45 @@
+@layout("/common/_container.html",{bg:"bg-white",js:["/assets/modular/business/award/award_add.js"]}){
+<form id="awardForm" lay-filter="awardForm" class="layui-form model-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">奖品等级<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input name="awardLevel" placeholder="奖品等级" type="text" class="layui-input" lay-verify="required" required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">奖品名称<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input name="awardName" placeholder="奖品名称" type="text" class="layui-input" lay-verify="required" required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">获奖规则<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="awardRequire" name="awardRequire" placeholder="请输入规则" type="text" class="layui-input"  autocomplete="off" lay-verify="required" required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">奖品数量<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input name="awardNum" placeholder="请输入数量" type="text" class="layui-input" lay-verify="required|psw" required/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">中奖显示图<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn" id="upload">上传图片</button>
+            <input type="hidden" id="wordUrl" name="awardUrl" value=""/>
+            <div class="layui-upload-list">
+                <img class="layui-upload-img" width="100px" height="80px" id="demo"/>
+                <p id="demoText"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item text-right">
+        <button class="layui-btn layui-btn-primary" type="button" ew-event="closeDialog">取消</button>
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>保存</button>
+    </div>
+</form>
+@}

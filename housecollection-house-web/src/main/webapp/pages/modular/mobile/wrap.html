@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="${ctxPath}/assets/modular/mobile/css/weui.css" />
+    <link rel="stylesheet" href="${ctxPath}/assets/modular/mobile/css/weuix.css" />
+    <link rel="stylesheet" href="${ctxPath}/assets/modular/mobile/css/index.css" />
+    <script src="${ctxPath}/assets/modular/mobile/js/jquery.js"></script>
+    <script src="${ctxPath}/assets/modular/mobile/js/zepto.min.js"></script>
+    <script src="${ctxPath}/assets/modular/mobile/js/zepto.weui.js"></script>
+    <script src="${ctxPath}/assets/modular/mobile/js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <img src="${ctxPath}/assets/modular/mobile/images/ban.png" alt="" style="width: 100%;margin-bottom: 0%;">
+        </div>
+
+        <div id="content">
+            <div class="content_body" v-for='(item,index) in dataArr' v-clock>
+                <div class="title">{{index+1}}.{{item.title+'?'}}</div>
+                <div class="chose" v-for='(list,i) in item.select' v-on:click="choseItem(item,i)" :class='item.flag==i+1?"xuanzhong" :""'>{{list.optionSort + '.'+list.optionContent}}</div>
+            </div>
+            <div class="subDiv">
+                <img src="${ctxPath}/assets/modular/mobile/images/submitbtn.png" alt="" style="width: 60%;margin: 0 auto;" v-on:click='sub'>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                dataArr: [],
+                userId: ''
+            },
+            created: function () {
+                var that = this;
+                that.userId = localStorage.getItem("userId") ? localStorage.getItem("userId") : '';
+                console.log(that.userId)
+                that.getData();
+
+            },
+            methods: {
+                getData() {
+                    var that = this;
+                    $.ajax({
+                        url: "${ctxPath}" + "/subject/findAllSubAndOpt",
+                        data: '',
+                        dataType: "json",
+                        type: "get",
+                        timeout: 10000,
+                        beforeSend: function () {
+                            $.showLoading('获取数据');
+                        },
+                        error: function () {
+                            $.hideLoading();
+                            $.toast.prototype.defaults.duration = 1000;//1秒
+                            $.toast("获取失败", 'text');
+                        },
+                        success: function (res) {
+                            $.hideLoading();
+                            if (res.code == 200) {
+                                var result = res.data;
+
+                                for (var i = 0; i < result.length; i++) {
+                                    result[i].flag = 'n';
+                                }
+                                that.dataArr = result;
+                            } else {
+                                $.toast.prototype.defaults.duration = 1000;//1秒
+                                $.toast("获取失败", 'text');
+                            }
+                        }
+                    })
+                },
+                join() {
+                    window.location.href = './index'
+                },
+                choseItem(item, i) {
+                    item.flag = i + 1;
+                },
+                filter(item) {
+                    var temp;
+                    if (item == 1) { temp = "A" }
+                    else if (item == 2) { temp = "B" }
+                    else if (item == 3) { temp = "C" }
+                    else if (item == 4) { temp = "D" }
+                    return temp;
+                },
+                sub() {
+                    $.showLoading('加载中');
+                    var that = this;
+                    var results = [];
+                    /*debugger;*/
+                    for (var  index = 0; index < that.dataArr.length; index++) {
+                        var  el = that.dataArr[index];
+                        if (el.flag == 'n') {
+                            $.hideLoading();
+                            $.alert("您还有题目暂未回答，不能提交", "提示", function () {
+                            });
+                            return;
+                        } else {
+                            var j = el.flag - 1;
+                            var obj={};
+                            obj.subjectId = el.select[j].subjectId;
+                            obj.optionId = el.select[j].optionId;
+                            obj.optionSort = el.select[j].optionSort;
+                            //还需要userId
+                            obj.userId = that.userId;
+                            results.push(obj);
+                        }
+
+                    }
+                    console.log(results);
+                    $.ajax({
+                        url: "/mobile/wx/commitData",
+                        data: JSON.stringify(results),
+                        contentType: "application/json;charset=UTF-8",
+                        type: "post",
+                        timeout: 10000,
+                        beforeSend: function () {
+                            $.showLoading('数据提交中');
+                        },
+                        error: function () {
+                            setTimeout(() => {
+                                $.hideLoading();
+                                $.toast.prototype.defaults.duration = 1000;//1秒
+                                $.toast("提交失败", 'text');
+                            }, 1000);
+                        },
+                        success: function (data) {
+                            
+                            if (data.code == 200) {
+                                setTimeout(function () {
+                                    $.hideLoading();
+                                    $.toast('提交成功', function () {
+                                        localStorage.removeItem('userId');
+                                        that.join();
+                                    });
+                                }, 2000);
+                            } else {
+                                $.toast.prototype.defaults.duration = 1000;//1秒
+                                $.toast("提交失败", 'text');
+                            }
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

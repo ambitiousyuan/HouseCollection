@@ -1,0 +1,33 @@
+# Mysql数据库
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.92.13.106:3306/house_collection_test?characterEncoding=UTF-8
+    username: setest
+    password: HnshengenSeDb@3108
+    filters: wall,mergeStat
+  redis:
+     host: 39.107.25.232
+     port: 6379
+     password: 123123
+     database: 5
+     timeout: 10000
+     lettuce:
+       pool:
+         #最大连接数
+         max-active: 1024
+         #最大阻塞等待时间(负数表示没限制)
+         max-wait: 10000
+         #最大空闲
+         max-idle: 200
+         #最小空闲
+         min-idle: 0
+# 多数据源情况的配置
+jizi:
+  muti-datasource:
+    open: false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/guns_test_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    username: root
+    password: root
+    data-source-name: otherdb
