@@ -71,7 +71,7 @@ public class ShiroConfig {
      * spring session管理器（多机环境）
      */
     @Bean
-    @ConditionalOnProperty(prefix = "jizi", name = "spring-session-open", havingValue = "true")
+    @ConditionalOnProperty(prefix = "housecollection", name = "spring-session-open", havingValue = "true")
     public ServletContainerSessionManager servletContainerSessionManager() {
         return new ServletContainerSessionManager();
     }
@@ -80,7 +80,7 @@ public class ShiroConfig {
      * session管理器(单机环境)
      */
     @Bean
-    @ConditionalOnProperty(prefix = "jizi", name = "spring-session-open", havingValue = "false")
+    @ConditionalOnProperty(prefix = "housecollection", name = "spring-session-open", havingValue = "false")
     public DefaultWebSessionManager defaultWebSessionManager(CacheManager cacheShiroManager, HouseCollectionProperties gunsProperties) {
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
         sessionManager.setCacheManager(cacheShiroManager);
