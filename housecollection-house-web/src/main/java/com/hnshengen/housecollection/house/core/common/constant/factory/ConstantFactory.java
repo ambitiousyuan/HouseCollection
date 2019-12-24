@@ -19,7 +19,6 @@ import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
 import cn.stylefeng.roses.core.util.SpringContextHolder;
 import cn.stylefeng.roses.core.util.ToolUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hnshengen.housecollection.house.core.common.constant.cache.Cache;
 import com.hnshengen.housecollection.house.core.common.constant.cache.CacheKey;

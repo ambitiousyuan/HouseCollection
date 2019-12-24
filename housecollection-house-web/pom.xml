@@ -266,6 +266,10 @@
 			<artifactId> weixin-java-mp </artifactId>
 			<version>3.3.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -356,7 +360,7 @@
 				<spring.active>local</spring.active>
 			</properties>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
 		<profile>
@@ -374,7 +378,7 @@
 				<spring.active>prod</spring.active>
 			</properties>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 		</profile>
 	</profiles>
