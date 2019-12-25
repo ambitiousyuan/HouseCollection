@@ -15,6 +15,8 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
+
+
     @RequestMapping("findAll")
     @ResponseBody
     public List<UserInfo> findAll(){
