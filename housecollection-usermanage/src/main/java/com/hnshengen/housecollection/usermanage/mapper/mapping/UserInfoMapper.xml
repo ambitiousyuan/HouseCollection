@@ -16,7 +16,7 @@
     <sql id="Base_Column_List">
        user_info_id as userInfoId, nick_name as nickName,
 		phone,open_id as openId,
-		pic_url as picUrl,
+		pic_url as picUrl
     </sql>
 
 </mapper>
