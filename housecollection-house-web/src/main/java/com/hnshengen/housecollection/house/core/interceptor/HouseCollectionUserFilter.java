@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @since 0.9
  */
-public class WenJuanSurveyUserFilter extends AccessControlFilter {
+public class HouseCollectionUserFilter extends AccessControlFilter {
 
     /**
      * Returns <code>true</code> if the request is a

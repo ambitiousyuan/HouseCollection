@@ -16,7 +16,7 @@
 package com.hnshengen.housecollection.house.web;
 
 import com.hnshengen.housecollection.house.core.common.constant.Const;
-import com.hnshengen.housecollection.house.core.interceptor.WenJuanSurveyUserFilter;
+import com.hnshengen.housecollection.house.core.interceptor.HouseCollectionUserFilter;
 import com.hnshengen.housecollection.house.core.shiro.ShiroDbRealm;
 import com.hnshengen.housecollection.house.properties.HouseCollectionProperties;
 import org.apache.shiro.cache.CacheManager;
@@ -159,7 +159,7 @@ public class ShiroConfig {
          * 覆盖默认的user拦截器(默认拦截器解决不了ajax请求 session超时的问题,若有更好的办法请及时反馈作者)
          */
         HashMap<String, Filter> myFilters = new HashMap<>();
-        myFilters.put("user", new WenJuanSurveyUserFilter());
+        myFilters.put("user", new HouseCollectionUserFilter());
         shiroFilter.setFilters(myFilters);
 
         /**
