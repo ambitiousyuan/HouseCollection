@@ -20,7 +20,7 @@ public class UserInfoController {
     @RequestMapping("findAll")
     @ResponseBody
     public List<UserInfo> findAll(){
-        System.out,print("111");
+        System.out.print("111");
         List<UserInfo> allUserInfo = userInfoService.getAllUserInfo();
         return allUserInfo;
     }
