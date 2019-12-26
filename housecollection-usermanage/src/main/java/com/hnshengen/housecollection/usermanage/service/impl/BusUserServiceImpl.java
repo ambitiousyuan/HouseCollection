@@ -16,4 +16,9 @@ public class BusUserServiceImpl extends ServiceImpl<BusUserMapper, BusUser> impl
         QueryWrapper<BusUser> busUser = new  QueryWrapper<BusUser>();
         return baseMapper.selectList(busUser);
     }
+
+    @Override
+    public boolean save(BusUser busUser) {
+        return busUser.insert();
+    }
 }

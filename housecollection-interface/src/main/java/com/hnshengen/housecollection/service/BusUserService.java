@@ -13,4 +13,5 @@ public interface BusUserService {
     List<BusUser> getAllUserInfo();
 
 
+    boolean save(BusUser busUser);
 }
