@@ -1,8 +1,7 @@
-package com.hnshengen.housecollection.usermanage.controller;
+package com.hnshengen.housecollection.house.modular.bussiness.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.hnshengen.housecollection.service.BrokerInfoService;
-import com.hnshengen.housecollection.usermanage.service.impl.BrokerInfoServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,8 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/broker")
 public class BrokerInfoController {
 
-    @Autowired
-    private BrokerInfoServiceImpl brokerInfoService;
+    @Reference
+    BrokerInfoService brokerInfoService;
 
     @RequestMapping("/list")
     @ResponseBody
