@@ -11,4 +11,8 @@ public interface BrokerInfoService {
      * @return
      */
     List<BrokerInfo> list();
+
+    boolean add(BrokerInfo brokerInfo);
+
+    void delete(Long brokerId);
 }

@@ -2,7 +2,6 @@ package com.hnshengen.housecollection.usermanage.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hnshengen.housecollection.bean.BrokerInfo;
 import com.hnshengen.housecollection.service.BrokerInfoService;
@@ -20,4 +19,17 @@ public class BrokerInfoServiceImpl extends ServiceImpl<BrokerInfoMapper, BrokerI
         List<BrokerInfo> brokerInfos = baseMapper.selectList(brokerInfo);
         return brokerInfos;
     }
+
+    @Override
+    public boolean add(BrokerInfo brokerInfo) {
+        boolean insert = brokerInfo.insert();
+        return insert;
+    }
+
+    @Override
+    public void delete(Long brokerId) {
+        baseMapper.deleteById(brokerId);
+    }
+
+
 }
