@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnshengen.housecollection.usermanage.mapper.BusUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap"
+               type="com.hnshengen.housecollection.bean.BusUser">
+        <id column="open_id" property="openId" />
+        <result column="name" property="name" />
+        <result column="phone" property="phone" />
+        <result column="sex" property="sex" />
+        <result column="pic_url" property="picUrl" />
+        <result column="birthday" property="birthday" />
+        <result column="user_type" property="userType" />
+        <result column="resgister_time" property="resgister_time" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+       open_id as openId, name ,phone,sex,
+        pic_url as picUrl,user_type as userType,
+		pic_url as picUrl , birthday ,user_type as userType ,
+		resgister_time as resgisterTime,updateTime as updateTime
+    </sql>
+
+</mapper>
