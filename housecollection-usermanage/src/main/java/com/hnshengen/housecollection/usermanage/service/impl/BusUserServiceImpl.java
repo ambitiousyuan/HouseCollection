@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hnshengen.housecollection.bean.BusUser;
-import com.hnshengen.housecollection.house.core.common.page.LayuiPageFactory;
 import com.hnshengen.housecollection.service.BusUserService;
 import com.hnshengen.housecollection.usermanage.mapper.BusUserMapper;
+import com.hnshengen.housecollection.usermanage.util.page.LayuiPageFactory;
 
 import java.util.Map;
 
