@@ -3,6 +3,7 @@ package com.hnshengen.housecollection.bean;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ import java.util.Date;
  * Created by MYP on 2019-12-26.
  */
 @Data
+@TableName("bus_user")
 public class BusUser extends Model<BusUser> implements Serializable {
 
     @TableId(value = "open_id", type = IdType.ID_WORKER)
