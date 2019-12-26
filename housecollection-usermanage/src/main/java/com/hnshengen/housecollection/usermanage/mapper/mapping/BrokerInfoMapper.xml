@@ -19,8 +19,6 @@
 		person_describe as personDescribe
     </sql>
 
-    <select id="list" resultType="map">
-        select * from broker_info where 1=1;
-    </select>
+
 
 </mapper>

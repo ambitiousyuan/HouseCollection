@@ -6,5 +6,9 @@ import java.util.List;
 
 public interface BrokerInfoService {
 
+    /**
+     * 查询所有的经纪人
+     * @return
+     */
     List<BrokerInfo> list();
 }

@@ -1,5 +1,6 @@
 package com.hnshengen.housecollection.house.modular.bussiness.controller;
 
+import cn.stylefeng.roses.core.reqres.response.ResponseData;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.hnshengen.housecollection.service.BrokerInfoService;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,6 @@ public class BrokerInfoController {
     @RequestMapping("/list")
     @ResponseBody
     public Object list(){
-        return brokerInfoService.list();
+        return ResponseData.success(brokerInfoService.list());
     }
 }
