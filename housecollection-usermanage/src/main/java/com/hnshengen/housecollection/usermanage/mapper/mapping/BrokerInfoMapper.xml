@@ -19,6 +19,15 @@
 		person_describe as personDescribe
     </sql>
 
+    <select id="list" resultType="map">
+        select
+        <include refid="BaseResultMap"></include>
+        from broker_info where 1=1
+        <if test="condition != null and condition != ''">
+            and name like CONCAT('%',#{condition},'%')
+        </if>
+    </select>
+
 
 
 </mapper>
