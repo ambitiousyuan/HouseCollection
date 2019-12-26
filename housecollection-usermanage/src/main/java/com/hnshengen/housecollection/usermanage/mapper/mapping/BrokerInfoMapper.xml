@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnshengen.housecollection.usermanage.mapper.BrokerInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap"
+               type="com.hnshengen.housecollection.bean.BrokerInfo">
+        <id column="broker_id" property="brokerId" />
+        <result column="name" property="name" />
+        <result column="phone" property="phone" />
+        <result column="head_portrait_url" property="headPortraitUrl" />
+        <result column="person_describe" property="personDescribe" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        broker_id as brokerId,name,phone,
+        head_portrait_url as headPortraitUrl,
+		person_describe as personDescribe
+    </sql>
+
+    <select id="list" resultType="map">
+        select * from broker_info where 1=1;
+    </select>
+
+</mapper>
