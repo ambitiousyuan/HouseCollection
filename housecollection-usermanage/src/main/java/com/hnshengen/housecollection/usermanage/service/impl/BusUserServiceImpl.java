@@ -9,15 +9,14 @@ import com.hnshengen.housecollection.service.BusUserService;
 import com.hnshengen.housecollection.usermanage.mapper.BusUserMapper;
 import com.hnshengen.housecollection.usermanage.util.page.LayuiPageFactory;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Service
 public class BusUserServiceImpl extends ServiceImpl<BusUserMapper, BusUser> implements BusUserService{
     @Override
-    public Page<Map<String, Object>> getAllUserInfo(String condition) {
-        Page page = LayuiPageFactory.defaultPage();
-        QueryWrapper<BusUser> busUser = new  QueryWrapper<BusUser>();
-        return baseMapper.list(page,condition);
+    public Page<Map<String, Object>> getAllUserInfo(Page page,String condition) {
+        return this.baseMapper.all(page,condition);
     }
 
     @Override
@@ -28,5 +27,6 @@ public class BusUserServiceImpl extends ServiceImpl<BusUserMapper, BusUser> impl
     @Override
     public void delete(BusUser busUser) {
         busUser.deleteById();
+        this.baseMapper.deleteall();
     }
 }

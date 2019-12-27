@@ -4,6 +4,7 @@ import cn.stylefeng.roses.core.reqres.response.ResponseData;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hnshengen.housecollection.bean.BusUser;
+import com.hnshengen.housecollection.house.core.common.page.LayuiPageFactory;
 import com.hnshengen.housecollection.service.BusUserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Controller
@@ -22,8 +25,9 @@ public class BusUserController {
     @RequestMapping("/getAllBusUser")
     @ResponseBody
     public Object getAllUserInfo(@RequestParam(value = "condition", required = false) String condition) {
-        Page<Map<String, Object>> list = busUserService.getAllUserInfo(condition);
-        return ResponseData.success();
+        Page page = LayuiPageFactory.defaultPage();
+        Page<Map<String, Object>> list = busUserService.getAllUserInfo(page,condition);
+        return LayuiPageFactory.createPageInfo(list);
     }
 
 

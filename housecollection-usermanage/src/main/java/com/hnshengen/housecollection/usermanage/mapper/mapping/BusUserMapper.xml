@@ -24,7 +24,7 @@
 		resgister_time as resgisterTime,updateTime as updateTime
     </sql>
 
-    <select id="list" resultType="map">
+    <select id="all" resultType="map">
         select
         <include refid="Base_Column_List" />
         from bus_user where 1 = 1
@@ -33,5 +33,6 @@
         </if>
     </select>
 
+    <delete id="deteleall"> delete from bus_user where open_id = '4354'</delete>
 
 </mapper>
